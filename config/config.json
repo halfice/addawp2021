@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "macwebpartadda-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/macwebpartadda/MacwebpartaddaWebPart.js",
+          "manifest": "./src/webparts/macwebpartadda/MacwebpartaddaWebPart.manifest.json"
+        }
+      ]
+    },
+    "wpcarousalmasterpage-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wpcarousalmasterpage/WpcarousalmasterpageWebPart.js",
+          "manifest": "./src/webparts/wpcarousalmasterpage/WpcarousalmasterpageWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MacwebpartaddaWebPartStrings": "lib/webparts/macwebpartadda/loc/{locale}.js",
+    "WpcarousalmasterpageWebPartStrings": "lib/webparts/wpcarousalmasterpage/loc/{locale}.js"
+  }
+}

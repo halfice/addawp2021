@@ -1,0 +1,96 @@
+<Row noGutters={true} >
+
+            <Col md={8} className="zeropadding" col-lg-8 col-md-8 col-xs-12>
+              <div>
+                <Carousel>
+
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100 myimgg"
+                      src="https://abudhabidigital.sharepoint.com/sites/intranet/Banner%20Slider/annou2.png"
+                      alt="First slide"
+
+                    />
+                    <Carousel.Caption>
+                      <h3>First slide label</h3>
+                      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100 myimgg"
+                      src="https://abudhabidigital.sharepoint.com/sites/intranet/SiteAssets/images/inner.jpg"
+                      alt="Second slide"
+                    />
+
+                    <Carousel.Caption>
+                      <h3>Second slide label</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100 myimgg"
+                      src="https://abudhabidigital.sharepoint.com/sites/intranet/Banner%20Slider/4.jpg"
+                      alt="Third slide"
+                    />
+
+                    <Carousel.Caption>
+                      <h3>Third slide label</h3>
+                      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </Carousel.Caption>
+
+                  </Carousel.Item>
+
+                </Carousel>
+              </div>
+            </Col>
+            <Col md={4} col-lg-4 col-md-4 col-xs-12 className="zeropadding">
+
+
+                <Row noGutters={true}>
+                  <Col md={6} col-lg-6 col-md-6 col-xs-12 className="zeropadding">
+                    <div>
+                      <img src="https://abudhabidigital.sharepoint.com/sites/intranet/SiteAssets/Images/zyed.jpg" className={styles.myimg} />
+                    </div>
+
+                  </Col>
+                  <Col md={6} col-lg-6 col-md-6 col-xs-12 className="zeropadding">
+                    <div className={styles.textdiv}>
+                    <p>Title</p>
+                      <p>Article Date: 1/17/2021</p>
+                      <p>
+  Sheikh Khalid bin Mohamed bin Zayed Al Nahyan, Member of the Abu Dhabi Executive Council,
+
+  </p>
+
+                    </div>
+
+
+                    <div>
+
+                    </div>
+                  </Col>
+                  <Col md={6} col-lg-6 col-md-6 col-xs-12 className="zeropadding">
+                    <div className={styles.textdivblue}>
+                    <p>Title</p>
+                      <p>Article Date: 1/17/2021</p>
+                      <p>
+  Sheikh Khalid bin Mohamed bin Zayed Al Nahyan, Member of the Abu Dhabi Executive Council,
+
+  </p>
+
+                    </div>
+                  </Col>
+                  <Col md={6} col-lg-6 col-md-6 col-xs-12 className="zeropadding">
+                    <div>
+                      <img src="https://abudhabidigital.sharepoint.com/sites/intranet/SiteAssets/Images/zyed.jpg" className={styles.myimg} />
+                    </div>
+                  </Col>
+
+
+                </Row>
+
+
+           </Col>
+          </Row>
