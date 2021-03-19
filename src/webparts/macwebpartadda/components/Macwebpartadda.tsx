@@ -57,14 +57,14 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
       {
         key: 'Teams',
         text: 'Teams',
-        href: 'https://abudhabidigital.sharepoint.com/',
+        href: 'https://teams.microsoft.com/l/chat/0/0?users=username%40.com',
         className:'myitemsmenu',
       },
 
       {
         key: 'Share Folder',
         text: 'Share Folder',
-        href: 'https://abudhabidigital.sharepoint.com/',
+        href: 'https://abudhabidigital-my.sharepoint.com/',
         className:'myitemsmenu',
       },
       {

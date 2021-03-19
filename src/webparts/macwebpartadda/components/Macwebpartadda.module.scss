@@ -181,8 +181,7 @@ border-radius: 0px;
 
 
     .myimgg{
-      height: 290px!important;
-      min-height: 290px;
+      height: auto!important;
 
         }
 
@@ -254,7 +253,46 @@ border-radius: 0px;
 
 }
 
+
+.innerdiv {
+  width: 152px;
+  height: 50px;
+  padding: 11px;
+  display: inline-block;
+  padding-top: 27px;
+  text-align: center;
+  height: 68px;
+  color: white !important;
+  cursor: pointer;
+
+
+
+
+
+
+}
+
+.innerdiv a {
+  color: white !important;
+}
+
+.govtport {
+  height: 115px !important;
+margin-bottom: 13px !important;
+width: 99%;
+background: #3a3a94 url('https://abudhabidigital.sharepoint.com/sites/intranet/SiteAssets/images/patren-carousel-b.png') repeat-x;
+padding: 10px 0px;
+border: 7px solid #fff;
+height: 110px;
+margin: auto;
+background-position-y: 5px;
+border-radius: 0px;
+}
+
+
 .macwebpartadda {
+
+
 
 .myimg{
   width: 100%!important;

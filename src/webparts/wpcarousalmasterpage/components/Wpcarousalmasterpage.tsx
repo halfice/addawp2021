@@ -204,20 +204,16 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
               finaltext = finaltext.substring(0, 130);
             }
             if (i == 0) {
-              return ( <Col md={12}>
+              return (<Col md={12}>
                 <h2><span>Tweets By</span>
                   <a className="tweetheading" href="https://twitter.com/AbuDhabiDigital">
                     @AbuDhabi_Tamm</a></h2></Col>
-                );
-
-
-
-
+              );
             }
             else {
               return (<Col md={6}><div className="AbuDhabi-Digital-twitter" key={i}>
                 <a target="_blank" href={finalurl} >
-                  <div>{finaltext}</div>
+                 {finaltext}
                   <div className="t-time-stamp">
                     {moment(item["created_at"]).format('DD/MM/YYYY')}
                     <span className="mr-3 float-right">
@@ -265,19 +261,18 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     };
     const DocumentCardActivityPeople = [{ name: 'Annie Lindqvist', profileImageSrc: "" }];
     var CurrentPageurl = window.location.href;
-    var LinksAr = [{ "name": "Attendance", "namear": "الحضور", "url": "", "urlar": "" },
+    var LinksAr = [
+      { "name": "Attendance", "namear": "الحضور", "url": "", "urlar": "" },
     { "name": "Outlook", "namear": "الآفاق", "url": "", "urlar": "" },
-    { "name": "Teams", "namear": "فرق", "url": "", "urlar": "" },
     { "name": "Orale", "namear": "وحي", "url": "", "urlar": "" },
     { "name": "Smart Support", "namear": "الدعم", "url": "", "urlar": "" },
     { "name": "Smart Entity", "namear": "ذكي", "url": "", "urlar": "" }];
 
     var Isarabic = 1;
-    var QuickLinks = [1, 2, 3, 4, 5, 6, 7];
 
 
     var quickLinks = LinksAr.map((item, i) => {
-      return <Col><div className="innerdiv" >{item["namear"]}</div></Col>;
+      return <Col md={2}><div className="innerdiv'" >{item["namear"]}</div></Col>;
     });
 
 
@@ -404,8 +399,8 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
 
 
 
-            <div className="govtport s4-notdlg qwhitebg content height mCustomScrollbar">
-              <div className="qlist maindiv row">
+            <div className="govtport">
+              <div className="row">
 
                 {quickLinks}
 

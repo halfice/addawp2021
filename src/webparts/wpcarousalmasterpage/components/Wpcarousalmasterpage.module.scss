@@ -1,8 +1,96 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
+
+.innerdiv:hover {
+  border: solid 5px white;
+  border-radius: 76px;
+  padding-top: 14px;
+  text-align: center;
+  height: 60px;
+  color: white;
+  cursor: pointer;
+  background-color: #003;
+  }
+
+
+.innerdiv {
+  width: 152px;
+  height: 50px;
+  padding: 11px;
+  padding-top: 27px;
+  text-align: center;
+  height: 68px;
+  color: white !important;
+  cursor: pointer;
+
+
+
+}
+
+.innerdiv a {
+  color: white !important;
+}
+
+.govtport {
+  height: 115px !important;
+margin-bottom: 13px !important;
+width: 99%;
+background: #3a3a94 url('https://abudhabidigital.sharepoint.com/sites/intranet/SiteAssets/images/patren-carousel-b.png') repeat-x;
+padding: 10px 0px;
+border: 7px solid #fff;
+height: 110px;
+margin: auto;
+background-position-y: 5px;
+border-radius: 0px;
+}
+
 .wpcarousalmasterpage {
 :global{
 
+
+
+
+
+.innerdiv {
+  width: auto;
+  height: auto;
+  padding: 11px;
+  display: inline-block;
+  padding-top: 17px;
+  text-align: center;
+  color: white !important;
+  cursor: pointer;
+
+
+}
+
+
+.innerdiv:hover {
+  border: solid 5px white;
+  border-radius: 76px;
+  padding-top: 14px;
+  text-align: center;
+  height: 60px;
+  color: white;
+  cursor: pointer;
+  background-color: #003;
+  }
+
+.innerdiv a {
+  color: white !important;
+}
+
+.govtport {
+  height: auto !important;
+margin-bottom: 13px !important;
+width: 99%;
+background: #3a3a94 url('https://abudhabidigital.sharepoint.com/sites/intranet/SiteAssets/images/patren-carousel-b.png') repeat-x;
+padding: 10px 0px;
+border: 7px solid #fff;
+margin: auto;
+background-position-y: 5px;
+border-radius: 0px;
+}
 
   .mr-1{
     font-style: normal!important;
@@ -30,17 +118,22 @@
   }
 
   .AbuDhabi-Digital-twitter {
-    width: 99%;
-    display: inline-block;
-    text-align: left;
-    vertical-align: top;
-    margin: 1px;
-    background: #f3f3f3;
-    padding: 9px;
-    position: relative;
-    height: 170px;
-    border-radius: 25px;
-    font-size: 12px;
+
+      width: 98%;
+      display: inline-block;
+      text-align: left;
+      vertical-align: top;
+      margin: 1px;
+      /* background: #f3f3f3; */
+      padding: 13px;
+      position: relative;
+      height: 142px;
+      /* border-radius: 25px; */
+      font-size: 11px;
+      border-bottom: solid 1px #3f51b5;
+      background-image: url('https://i.pinimg.com/originals/ba/46/c8/ba46c8090ccc536ef26c005f9f2fc404.gif');
+      z-index: 99999999;
+
 }
 .AbuDhabi-Digital-twitter >  a {
   color: #000!important;
