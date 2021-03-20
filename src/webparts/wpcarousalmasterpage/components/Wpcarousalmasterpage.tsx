@@ -19,7 +19,6 @@ import {
   IDocumentCardPreviewProps,
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { hiddenContentStyle, ThemeSettingName } from 'office-ui-fabric-react/lib/Styling';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

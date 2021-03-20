@@ -9,8 +9,7 @@
   "scripts": {
     "build": "gulp bundle",
     "clean": "gulp clean",
-    "test": "./node_modules/.bin/jest --config ./config/jest.config.json",
-    "test:watch": "./node_modules/.bin/jest --config ./config/jest.config.json --watchAll"
+    "test": "gulp test"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -23,7 +22,6 @@
     "@microsoft/sp-property-pane": "1.10.0",
     "@microsoft/sp-webpart-base": "1.10.0",
     "@pnp/graph": "^2.3.0",
-    "@pnp/polyfill-ie11": "^2.0.2",
     "@pnp/sp": "^2.3.0",
     "@types/es6-promise": "0.0.33",
     "@types/react": "16.8.8",
@@ -53,11 +51,8 @@
     "@microsoft/sp-webpart-workbench": "1.10.0",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
-    "@voitanos/jest-preset-spfx-react16": "^1.3.2",
     "ajv": "~5.2.2",
     "gulp": "~3.9.1",
-    "jest": "^26.6.3",
-    "jest-junit": "^12.0.0",
     "typescript": "^4.2.3"
   }
 }
