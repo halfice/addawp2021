@@ -12,6 +12,7 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
@@ -27,11 +28,13 @@
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.6.0",
     "jquery": "^1.9.1",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "office-ui-fabric-react": "6.189.2",
+    "polyfill-array-includes": "^2.0.0",
     "react": "16.8.5",
     "react-bootstrap": "^1.5.2",
     "react-calendar": "^3.3.0",

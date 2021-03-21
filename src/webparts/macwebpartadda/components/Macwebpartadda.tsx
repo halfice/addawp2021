@@ -12,6 +12,9 @@ import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/Com
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 import { default as pnp, ItemAddResult, Web, ConsoleListener } from "sp-pnp-js";
+var Symbol = require('es6-symbol/polyfill');
+import "@babel/polyfill";
+
 
 
 
@@ -148,8 +151,8 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
 
                     />
                     <Carousel.Caption>
-                      <h3>First slide label</h3>
-                      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                      <h3>.</h3>
+                      <p>Leading the digital future of Abu Dhabi</p>
                     </Carousel.Caption>
                   </Carousel.Item>
                   <Carousel.Item>
@@ -160,8 +163,8 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
                     />
 
                     <Carousel.Caption>
-                      <h3>Second slide label</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <h3></h3>
+                      <p>We enable, support and deliver a digital government that is proactive, personalized, collaborative and secure.</p>
                     </Carousel.Caption>
                   </Carousel.Item>
                   <Carousel.Item>
@@ -172,8 +175,9 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
                     />
 
                     <Carousel.Caption>
-                      <h3>Third slide label</h3>
-                      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                      <h3></h3>
+                      <p>نقود المستقبل الرقمي لحكومة أبوظبي</p>
+
                     </Carousel.Caption>
 
                   </Carousel.Item>
