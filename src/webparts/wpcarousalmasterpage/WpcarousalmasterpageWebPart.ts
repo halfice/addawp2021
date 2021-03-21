@@ -8,8 +8,16 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'WpcarousalmasterpageWebPartStrings';
+
+
+
+
 import Wpcarousalmasterpage from './components/Wpcarousalmasterpage';
 import { IWpcarousalmasterpageProps } from './components/IWpcarousalmasterpageProps';
+
+
+
+
 
 export interface IWpcarousalmasterpageWebPartProps {
   description: string;

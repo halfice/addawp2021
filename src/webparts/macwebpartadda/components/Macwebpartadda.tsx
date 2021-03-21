@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { IMacwebpartaddaProps } from './IMacwebpartaddaProps';
+
+import "@pnp/polyfill-ie11";
+import 'babel-polyfill';
 import { escape } from '@microsoft/sp-lodash-subset';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/Row';
@@ -12,8 +15,7 @@ import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/Com
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 import { default as pnp, ItemAddResult, Web, ConsoleListener } from "sp-pnp-js";
-var Symbol = require('es6-symbol/polyfill');
-import "@babel/polyfill";
+
 
 
 

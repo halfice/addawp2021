@@ -1,5 +1,11 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+
+
+
+import "@pnp/polyfill-ie11";
+import 'babel-polyfill';
+
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
@@ -8,6 +14,8 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'MacwebpartaddaWebPartStrings';
+
+
 import Macwebpartadda from './components/Macwebpartadda';
 import { IMacwebpartaddaProps } from './components/IMacwebpartaddaProps';
 

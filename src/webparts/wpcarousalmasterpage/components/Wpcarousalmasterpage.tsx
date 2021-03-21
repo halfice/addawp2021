@@ -25,7 +25,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import * as moment from 'moment';
-import "@babel/polyfill";
 
 
 
