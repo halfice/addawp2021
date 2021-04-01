@@ -5,6 +5,26 @@
 
 :global{
 
+  .languagediv  label{
+    color: white!important;
+    font-size: 14px!important;
+  }
+
+  .ms-Toggle-stateText{
+    color: white!important;
+    font-size: 14px!important;
+
+  }
+
+
+  .languagediv{
+    position: absolute;
+    z-index: 999999;
+    font-size: 14px!important;
+    right: 32px;
+    padding-top: 11px!important;
+
+  }
 
   .myitemsmenu .ms-CommandBarItem-link{
     border:none!important;

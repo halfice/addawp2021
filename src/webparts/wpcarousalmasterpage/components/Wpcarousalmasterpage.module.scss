@@ -44,12 +44,32 @@ background-position-y: 5px;
 border-radius: 0px;
 }
 
+.ms-Toggle-stateText{
+  color: white!important;
+}
+
 .wpcarousalmasterpage {
 :global{
 
 
 
 
+.myrow{
+  background: #3a3a94 url('https://abudhabidigital.sharepoint.com/sites/intranet/SiteAssets/images/patren-carousel-b.png');
+  border: solid 3px white;
+  border-radius: 16px;
+  text-align: center;
+
+  color: white;
+  cursor: pointer;
+  padding-top: 11px!important;
+  padding-bottom:11px!important;
+}
+
+
+languagediv :label {
+  color: white!important;
+}
 
 .innerdiv {
   width: auto;
@@ -65,12 +85,11 @@ border-radius: 0px;
 }
 
 
-.innerdiv:hover {
-  border: solid 5px white;
-  border-radius: 76px;
-  padding-top: 14px;
+.mycol:hover {
+  border: solid 3px white;
+  border-radius: 16px;
   text-align: center;
-  height: 60px;
+
   color: white;
   cursor: pointer;
   background-color: #003;

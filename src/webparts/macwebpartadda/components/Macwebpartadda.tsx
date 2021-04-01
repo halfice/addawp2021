@@ -15,7 +15,14 @@ import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/Com
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 import { default as pnp, ItemAddResult, Web, ConsoleListener } from "sp-pnp-js";
+import { sp } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
+import { DefaultButton, IContextualMenuProps, Stack, IStackTokens } from 'office-ui-fabric-react';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
+import { _Item, _Items } from '@pnp/sp/items/types';
 
 
 
@@ -28,6 +35,12 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
     this.setState({
       description: "",
       IsArabic: false,
+      MenuItem: [],
+      disabled: false,
+      languagelabel:"EN",
+      culture:this.props.culture,
+
+
 
 
     });
@@ -36,16 +49,204 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
 
   }
 
-
   public componentDidMount() {
     var queryParms = new UrlQueryParameterCollection(window.location.href);
-    //alert(queryParms);
+
+    var pageculture=this.props.culture;
+   if (queryParms!=null){
+    var currentPage= queryParms["_queryParameterList"][0].key;
+   }
+   var tmpLang="en";
+    if (currentPage!="EN-US"){
+      tmpLang="arabic";
+    }
+    this.setState({languagelabel:tmpLang});
+  // alert(this.state.languagelabel);
+    this.getlistdatea();
+  }
+
+  public getobjectchild(item, filter) {
+
+    //var filteredarray = item.filter(menu => menu["parent"] == item[i]["Title"]);
+    //console.log("This is fildtered Array : "+filteredarray);
+    var xitem = [];
+    for (var i = 0; i < item.length; i++) {
+      if (item[i].parent != undefined) {
+        if (item[i].parent.Title == filter) {
+          var NewData = {
+            text: this.state.languagelabel !=  "arabic" ? item[i].Title :item[i].Titlear,
+            key: item[i].Titlear,
+            href: item[i].enurl,
+            //parentId: allItems[i].parentId,
+            className: 'myitemsmenu',
+          };
+          xitem.push(NewData);//= NewData;
+
+        }
+      }
+    }
+
+
+    var xd = "";
+    var ar = [];
+    var objx = {
+      key: 'Corporate Affairs',
+      text: 'Corporate Affairs',
+      iconProps: {
+        iconName: 'Mail'
+      },
+
+    };
+
+    ar.push(objx);
+
+
+    return xitem;
+    //return ar;
+  }
+
+  public getobject(item, filter) {
+
+    var xitem = [];
+    for (var i = 0; i < item.length; i++) {
+      if (item[i].parent != undefined) {
+        if (item[i].parent.Title == filter) {
+
+          var filteredarray = item.filter(menu => menu["parent"] != null && menu["parent"].Title == item[i]["Title"]);
+          console.log(filteredarray);
+
+          if (filteredarray.length > 0) {
+            var NewDatax = {
+              text: this.state.languagelabel !=  "arabic" ? item[i].Title :item[i].Titlear,
+              key: item[i].Titlear,
+              href: item[i].enurl,
+              className: 'myitemsmenu',
+              subMenuProps:
+              {
+                items: this.getobjectchild(item,item[i].Title)// this.state.languagelabel !=  "arabic" ? item[i].Title :item[i].Titlear)
+              },
+            };
+            xitem.push(NewDatax);//= NewData;
+          } else {
+            var NewData = {
+              text: item[i].Title,
+              key: item[i].Titlear,
+              href: item[i].enurl,
+              //parentId: allItems[i].parentId,
+              className: 'myitemsmenu',
+            };
+            xitem.push(NewData);//= NewData;
+          }
+
+
+
+        }
+      }
+    }
+
+
+    var xd = "";
+    var ar = [];
+    var objx = {
+      key: 'Corporate Affairs',
+      text: 'Corporate Affairs',
+      iconProps: {
+        iconName: 'Mail'
+      },
+
+    };
+
+    ar.push(objx);
+
+
+    return xitem;
+    //return ar;
+  }
+
+  public async getlistdatea() {
+
+    var TempComplteDropDown = [];
+    var NewISiteUrl = this.props.siteurl;
+    var NewSiteUrl = NewISiteUrl.replace("/SitePages", "");
+    let webx = new Web(NewSiteUrl);
+
+    var _tems = [];
+    webx.lists.getByTitle("Navigation").items.select("Title", "parent/Title", "parent/ID", "Titlear", "enurl").expand("parent").get().then((allItems: any[]) => {
+
+      var sec = 0;
+      for (var i = 0; i < allItems.length; i++) {
+        if (allItems[i].parent == undefined) {
+
+          if (allItems[i].Title != 'Sectors') {
+            var NewData = {
+              text: this.state.languagelabel !=  "arabic" ? allItems[i].Title :allItems[i].Titlear,
+              key: allItems[i].Titlear,
+              href: allItems[i].enurl,
+              //parentId: allItems[i].parentId,
+              className: 'myitemsmenu',
+              //subMenuProps:this.getobject(allItems,'Sectors'),
+            };
+            _tems.push(NewData);//= NewData;
+          }
+
+        }
+        else {
+          if (allItems[i].parent.Title == 'Sectors' && sec == 0) {
+            sec = 1;
+
+            var NewDatak = {
+              text: this.state.languagelabel !=  "arabic" ? "Sectors" :"القطاعات",
+              key: "القطاعات", //allItems[i].Titlear,
+              href: "",
+              className: 'myitemsmenu',
+              subMenuProps:
+              {
+                items: this.getobject(allItems,"Sectors" ) //this.state.languagelabel !=  "arabic" ? "Sectors" :"القطاعات")
+              },
+            };
+            _tems.push(NewDatak);//= NewData;
+          }
+          break;
+
+        }
+      }
+      console.log(_tems);
+      this.setState({
+        MenuItem: _tems
+      });
+    });
+
+
   }
 
   public _onLinkClick(ev?: React.MouseEvent<HTMLElement>, item?: INavLink) {
     if (item && item.name === 'News') {
-      alert('News link clicked');
+     // alert('News link clicked');
     }
+  }
+
+  public _alertClicked() {
+   var language=this.state.IsArabic;
+    if (this.state.IsArabic==false){
+    language=true;
+    }else{
+      language=false;
+    }
+    this.setState({
+      IsArabic: language
+    });
+  }
+
+  public _onChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+    //console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
+    var temp="";
+    temp =checked ? 'true' : 'false';
+
+    this.setState({
+        IsArabic: temp,
+    });
+
+
   }
 
   public render(): React.ReactElement<IMacwebpartaddaProps> {
@@ -57,78 +258,37 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
         key: 'Home',
         text: 'Home',
         href: 'https://abudhabidigital.sharepoint.com/',
-        className:'myitemsmenu',
+        className: 'myitemsmenu',
       },
       {
         key: 'Teams',
         text: 'Teams',
         href: 'https://teams.microsoft.com/l/chat/0/0?users=username%40.com',
-        className:'myitemsmenu',
+        className: 'myitemsmenu',
       },
 
       {
         key: 'Share Folder',
         text: 'Share Folder',
         href: 'https://abudhabidigital-my.sharepoint.com/',
-        className:'myitemsmenu',
+        className: 'myitemsmenu',
       },
       {
         key: 'Sectors',
         text: 'Sectors',
         cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
-        className:'myitemsmenu',
+        className: 'myitemsmenu',
         subMenuProps: {
           items: [
             {
               key: 'Corporate Affairs',
               text: 'Corporate Affairs',
-              iconProps: { iconName: 'Mail'},
-
-
-              className:'myitemsmenu',
-              subMenuProps: {
-                items: [
-                  {
-                    key: 'Stratetegic',
-                    text: 'Stratetegic',
-                    className:'myitemsmenu',
-                  }
-                ]
-              },
-
-
-            },
-            {
-              key: 'Support Services',
-              text: 'Support Services',
-              className:'myitemsmenu',
-              subMenuProps: {
-                items: [
-                  {
-                    key: 'IT',
-                    text: 'IT',
-                    className:'myitemsmenu',
-                  },
-                  {
-                    key: 'HR',
-                    text: 'HR',
-                    className:'myitemsmenu',
-                  },
-                  {
-                    key: 'Procurement',
-                    text: 'Procurement',
-                    className:'myitemsmenu',
-                  },
-                  {
-                    key: 'Finance',
-                    text: 'Finance',
-                    className:'myitemsmenu',
-                  },
-
-                ]
+              iconProps: {
+                iconName: 'Mail'
               },
 
             },
+
           ],
         },
       },
@@ -136,10 +296,36 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
 
     ];
 
+    const menuProps: IContextualMenuProps = {
+      items: [
+        {
+          key: 'Arabic',
+          text: 'Arabic',
+          iconProps: { iconName: 'Mail' },
+        },
+        {
+          key: 'English',
+          text: 'English',
+          iconProps: { iconName: 'Calendar' },
+        },
+      ],
+    };
+    const stackTokens: IStackTokens = { childrenGap: 40 };
+
+
     return (
       <div className={styles.macwebpartadda}>
         <Container fluid>
           <Row noGutters={true} >
+            <div className="languagediv">
+              <Stack horizontal wrap tokens={stackTokens}>
+
+                      <Toggle label="" className="mylabeltxt" defaultChecked onText="En" offText="AR" onChange={this._onChange} />
+
+
+              </Stack>
+
+            </div>
 
             <Col md={12} className="zeropadding" >
               <div>
@@ -190,17 +376,24 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
 
           </Row>
 
-          <Row noGutters={true} className="zeropadding">
-            <Col className="mydivcommandbar">
-              <CommandBar
-                items={_items}
-                overflowButtonProps={overflowProps}
-                ariaLabel="Use left and right arrow keys to navigate between commands"
-                className="mycommandbar"
-              />
+          {
 
-            </Col>
-          </Row>
+
+            this.state != null &&
+
+            <Row noGutters={true} className="zeropadding">
+              <Col className="mydivcommandbar">
+                <CommandBar
+                  items={this.state.MenuItem}
+                  overflowButtonProps={overflowProps}
+                  ariaLabel="Use left and right arrow keys to navigate between commands"
+                  className="mycommandbar"
+                />
+
+              </Col>
+            </Row>
+          }
+
 
 
 

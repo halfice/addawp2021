@@ -213,7 +213,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
             else {
               return (<Col md={6}><div className="AbuDhabi-Digital-twitter" key={i}>
                 <a target="_blank" href={finalurl} >
-                 {finaltext}
+                  {finaltext}
                   <div className="t-time-stamp">
                     {moment(item["created_at"]).format('DD/MM/YYYY')}
                     <span className="mr-3 float-right">
@@ -263,16 +263,19 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     var CurrentPageurl = window.location.href;
     var LinksAr = [
       { "name": "Attendance", "namear": "الحضور", "url": "", "urlar": "" },
-    { "name": "Outlook", "namear": "الآفاق", "url": "", "urlar": "" },
-    { "name": "Orale", "namear": "وحي", "url": "", "urlar": "" },
-    { "name": "Smart Support", "namear": "الدعم", "url": "", "urlar": "" },
-    { "name": "Smart Entity", "namear": "ذكي", "url": "", "urlar": "" }];
+      { "name": "Outlook", "namear": "الآفاق", "url": "", "urlar": "" },
+      { "name": "Orale", "namear": "وحي", "url": "", "urlar": "" },
+      { "name": "Smart Support", "namear": "الدعم", "url": "", "urlar": "" },
+      { "name": "Smart Entity", "namear": "ذكي", "url": "", "urlar": "" },
+      { "name": "Employees", "namear": "الموظف", "url": "", "urlar": "" }
+
+    ];
 
     var Isarabic = 1;
 
 
     var quickLinks = LinksAr.map((item, i) => {
-      return <Col md={2}><div className="innerdiv'" >{item["namear"]}</div></Col>;
+      return <Col md={2} className="mycol"><div className="innerdiv'" >{item["namear"]}</div></Col>;
     });
 
 
@@ -395,17 +398,10 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
           <Row noGutters={true} className="zeropadding">
             <h3>Quick Links</h3>
           </Row>
-          <Row noGutters={true} className="zeropadding">
+          <Row noGutters={true} className="zeropadding myrow">
 
+            {quickLinks}
 
-
-            <div className="govtport">
-              <div className="row">
-
-                {quickLinks}
-
-              </div>
-            </div>
             <Col>
             </Col>
 

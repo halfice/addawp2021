@@ -6,7 +6,7 @@
     "libraryName": "macaddacrousal",
     "libraryId": "3faec7d7-086c-4cd4-90a8-38ad246573cb",
     "packageManager": "npm",
-    "isDomainIsolated": true,
+    "isDomainIsolated": false,
     "componentType": "webpart"
   }
 }
