@@ -5,6 +5,12 @@
 
 :global{
 
+
+  .ms-ContextualMenu-link{
+    background: #6666cc!important;
+
+
+  }
   .languagediv  label{
     color: white!important;
     font-size: 14px!important;
@@ -28,19 +34,51 @@
 
   .myitemsmenu .ms-CommandBarItem-link{
     border:none!important;
+    background: #6666cc!important;
   }
 
   .myitemsmenu .ms-ContextualMenu-link:hover{
     color: white!important;
-    background: #151567!important;
+    background: #6666cc!important;
 
   }
 
   .myitemsmenu .ms-ContextualMenu-link{
     color: white!important;
+    background: #151567!important;
   }
 
 .mycommandbar{
+  background: #6666cc!important;
+}
+
+.mydivcommandbarAR{
+  direction: rtl!important;
+  background: #6666cc!important;
+}
+
+.mydivcommandbarAR .ms-ContextualMenu-linkContent{
+  float: right!important;
+  direction: rtl!important;
+}
+
+
+.mydivcommandbarAR .ms-CommandBar{
+  direction: rtl!important;
+  background: #6666cc!important;
+}
+
+
+.mydivcommandbarAR .ms-CommandBar-primaryCommand{
+  background: #6666cc!important;
+}
+
+
+.mydivcommandbarAR  .ms-CommandBar:hover{
+  background: #6666cc!important;
+}
+
+.mydivcommandbarAR .ms-CommandBar-primaryCommand:hover{
   background: #6666cc!important;
 }
 

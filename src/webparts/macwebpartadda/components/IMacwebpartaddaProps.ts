@@ -8,5 +8,5 @@ export interface IMacwebpartaddaProps {
   disabled?: boolean;
   languagelabel:string;
   culture:string;
-
+  menucss:string;
 }

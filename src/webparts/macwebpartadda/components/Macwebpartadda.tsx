@@ -39,6 +39,7 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
       disabled: false,
       languagelabel:"EN",
       culture:this.props.culture,
+      menucss:"mydivcommandbar"
 
 
 
@@ -57,10 +58,14 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
     var currentPage= queryParms["_queryParameterList"][0].key;
    }
    var tmpLang="en";
+   var csstmp="mydivcommandbar";
     if (currentPage!="EN-US"){
       tmpLang="arabic";
+      csstmp="mydivcommandbarAR";
     }
-    this.setState({languagelabel:tmpLang});
+    this.setState({languagelabel:tmpLang,
+    menucss:csstmp
+    });
   // alert(this.state.languagelabel);
     this.getlistdatea();
   }
@@ -381,8 +386,8 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
 
             this.state != null &&
 
-            <Row noGutters={true} className="zeropadding">
-              <Col className="mydivcommandbar">
+            <Row noGutters={true} className="macwebpartadda">
+              <Col className={this.state.menucss}>
                 <CommandBar
                   items={this.state.MenuItem}
                   overflowButtonProps={overflowProps}
