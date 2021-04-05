@@ -261,6 +261,8 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     };
     const DocumentCardActivityPeople = [{ name: 'Annie Lindqvist', profileImageSrc: "" }];
     var CurrentPageurl = window.location.href;
+
+
     var LinksAr = [
       { "name": "Attendance", "namear": "الحضور", "url": "", "urlar": "" },
       { "name": "Outlook", "namear": "الآفاق", "url": "", "urlar": "" },
@@ -285,7 +287,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
         <Container fluid>
           <Row noGutters={true} >
             <Col>
-              <h1>Announcements</h1>
+              <h2>Announcements</h2>
             </Col>
           </Row>
           <Row noGutters={true} >
@@ -343,23 +345,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
               </DocumentCard>
 
             </Col>
-            <Col>
-              <DocumentCard
-                aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
-                onClickHref="http://bing.com"
-              >
-                <DocumentCardPreview {...previewProps} />
-                <DocumentCardTitle
-                  title={
-                    'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
-                    'it_needs_truncating.pptx'
-                  }
-                  shouldTruncate
-                />
-                <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
-              </DocumentCard>
 
-            </Col>
 
           </Row>
         </Container>
@@ -414,55 +400,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
         </Container>
         <hr></hr>
 
-        <Container fluid>
-          <Row noGutters={true} >
-            <Col>
-              <h1>Announcements</h1>
-            </Col>
-          </Row>
-          <Row noGutters={true} >
-            <Col>
-              <DocumentCard
-                aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
-                onClickHref="http://bing.com"
-              >
-                <DocumentCardPreview {...previewProps} />
-                <DocumentCardTitle
-                  title={
-                    'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
-                    'it_needs_truncating.pptx'
-                  }
-                  shouldTruncate
-                />
-                <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
-              </DocumentCard>
 
-            </Col>
-
-            <Col>
-              <DocumentCard
-                aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
-                onClickHref="http://bing.com"
-              >
-                <DocumentCardPreview {...previewProps} />
-                <DocumentCardTitle
-                  title={
-                    'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
-                    'it_needs_truncating.pptx'
-                  }
-                  shouldTruncate
-                />
-                <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
-              </DocumentCard>
-
-            </Col>
-
-
-
-
-
-          </Row>
-        </Container>
         <hr></hr>
 
 
