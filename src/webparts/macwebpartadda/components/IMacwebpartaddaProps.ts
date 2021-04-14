@@ -9,4 +9,7 @@ export interface IMacwebpartaddaProps {
   languagelabel:string;
   culture:string;
   menucss:string;
+  mychecked:boolean;
+  showcompoennt:string;
+  cssmyitemsmenu:string;
 }

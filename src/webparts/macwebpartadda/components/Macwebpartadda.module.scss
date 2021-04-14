@@ -6,8 +6,33 @@
 :global{
 
 
+  .myitemsmenuar{
+    background: #6666cc;
+    padding-right: 20px;
+    z-index: 9;
+    min-height: 25px !important;
+    color: white!important;
+    border:none!important;
+    font-family: Bukra!important;
+
+  }
+
+  .myitemsmenuar:hover{
+    background: #6666cc;
+    padding-right: 20px;
+    z-index: 9;
+    min-height: 25px !important;
+    color: white!important;
+    border:none!important;
+    font-family: Bukra!important;
+
+  }
+
+
   .ms-ContextualMenu-link{
     background: #6666cc!important;
+    color: white!important;
+    font-weight: bold;
 
 
   }
@@ -55,37 +80,45 @@
 .mydivcommandbarAR{
   direction: rtl!important;
   background: #6666cc!important;
+  font-family: Bukra!important;
 }
 
 .mydivcommandbarAR .ms-ContextualMenu-linkContent{
   float: right!important;
   direction: rtl!important;
+  font-family: Bukra!important;
 }
 
 
 .mydivcommandbarAR .ms-CommandBar{
   direction: rtl!important;
   background: #6666cc!important;
+  font-family: Bukra!important;
 }
 
 
 .mydivcommandbarAR .ms-CommandBar-primaryCommand{
   background: #6666cc!important;
+  font-family: Bukra!important;
 }
 
 
 .mydivcommandbarAR  .ms-CommandBar:hover{
   background: #6666cc!important;
+  font-family: Bukra!important;
 }
 
 .mydivcommandbarAR .ms-CommandBar-primaryCommand:hover{
   background: #6666cc!important;
+  font-family: Bukra!important;
 }
 
 
 
 .mydivcommandbar  .ms-CommandBar{
     background: #6666cc!important;
+    direction :ltr;
+
   }
 
   .mydivcommandbar .ms-CommandBar-primaryCommand{
@@ -95,28 +128,31 @@
 
   .mydivcommandbar  .ms-CommandBar:hover{
     background: #6666cc!important;
+    color: white!important;;
   }
 
   .mydivcommandbar .ms-CommandBar-primaryCommand:hover{
     background: #6666cc!important;
+    color: white!important;;
   }
 
 
+
+
+
+
+
   .myitemsmenu{
-    width: 100%;
     background: #6666cc;
-    float: left;
     padding-right: 20px;
     z-index: 9;
     min-height: 25px !important;
-    color: white;
+    color: white!important;;
     border:none!important;
   }
 
   .mycommandbar{
-    width: 100%;
     background: #6666cc;
-    float: left;
     padding-right: 20px;
     z-index: 9;
     min-height: 25px !important;
@@ -124,9 +160,7 @@
   }
 
   .myitemsmenu:hover{
-    width: 100%;
     background: #6666cc!important;;
-    float: left;
     padding-right: 20px;
     z-index: 9;
     min-height: 25px !important;
@@ -138,13 +172,13 @@
 
 
   .mycommandbar:hover{
-    width: 100%;
+
     background: #6666cc;
-    float: left;
+
     padding-right: 20px;
     z-index: 9;
     min-height: 25px !important;
-    color: white;
+    color: white!important;;
     text-decoration: none!important;
 
   }

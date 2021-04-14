@@ -24,9 +24,6 @@ import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import { _Item, _Items } from '@pnp/sp/items/types';
 
-
-
-
 export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps, {}> {
   public state: IMacwebpartaddaProps;
   constructor(props, context) {
@@ -37,36 +34,46 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
       IsArabic: false,
       MenuItem: [],
       disabled: false,
-      languagelabel:"EN",
-      culture:this.props.culture,
-      menucss:"mydivcommandbar"
-
-
+      languagelabel: "EN",
+      culture: this.props.culture,
+      menucss: "mydivcommandbar",
+      mychecked: true,
+      showcompoennt: "no",
+      cssmyitemsmenu:"myitemsmenu",
 
 
     });
-
 
 
   }
+  public componentWillMount(){
+  }
 
   public componentDidMount() {
-    var queryParms = new UrlQueryParameterCollection(window.location.href);
 
-    var pageculture=this.props.culture;
-   if (queryParms!=null){
-    var currentPage= queryParms["_queryParameterList"][0].key;
-   }
-   var tmpLang="en";
-   var csstmp="mydivcommandbar";
-    if (currentPage!="EN-US"){
-      tmpLang="arabic";
-      csstmp="mydivcommandbarAR";
+    var Pageurl = window.location.href;
+    var tmpLang = "en";
+    var Tempcss="myitemsmenuar";
+    var temp = true;
+    var csstmp = "mydivcommandbar";
+    if (Pageurl.indexOf("/ar/") > -1) {
+      tmpLang = "arabic";
+      csstmp = "mydivcommandbarAR";
+      temp = false;
+      Tempcss="myitemsmenuar";
     }
-    this.setState({languagelabel:tmpLang,
-    menucss:csstmp
+
+
+
+    this.setState({
+      languagelabel: tmpLang,
+      menucss: csstmp,
+      IsArabic: temp,
+      mychecked: temp,
+      checked: temp,
+      cssmyitemsmenu:Tempcss,
     });
-  // alert(this.state.languagelabel);
+
     this.getlistdatea();
   }
 
@@ -79,11 +86,12 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
       if (item[i].parent != undefined) {
         if (item[i].parent.Title == filter) {
           var NewData = {
-            text: this.state.languagelabel !=  "arabic" ? item[i].Title :item[i].Titlear,
+            text: this.state.languagelabel != "arabic" ? item[i].Title : item[i].Titlear,
             key: item[i].Titlear,
-            href: item[i].enurl,
+            href: this.state.languagelabel != "arabic" ? item[i].enurl : item[i].Url, //allItems[i].enurl,
+
             //parentId: allItems[i].parentId,
-            className: 'myitemsmenu',
+            className:this.state.cssmyitemsmenu
           };
           xitem.push(NewData);//= NewData;
 
@@ -122,13 +130,14 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
 
           if (filteredarray.length > 0) {
             var NewDatax = {
-              text: this.state.languagelabel !=  "arabic" ? item[i].Title :item[i].Titlear,
+              text: this.state.languagelabel != "arabic" ? item[i].Title : item[i].Titlear,
               key: item[i].Titlear,
-              href: item[i].enurl,
-              className: 'myitemsmenu',
+              href: this.state.languagelabel != "arabic" ? item[i].enurl : item[i].Url, //allItems[i].enurl,
+             // className: 'myitemsmenu',
+             className:this.state.cssmyitemsmenu,
               subMenuProps:
               {
-                items: this.getobjectchild(item,item[i].Title)// this.state.languagelabel !=  "arabic" ? item[i].Title :item[i].Titlear)
+                items: this.getobjectchild(item, item[i].Title)// this.state.languagelabel !=  "arabic" ? item[i].Title :item[i].Titlear)
               },
             };
             xitem.push(NewDatax);//= NewData;
@@ -138,7 +147,9 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
               key: item[i].Titlear,
               href: item[i].enurl,
               //parentId: allItems[i].parentId,
-              className: 'myitemsmenu',
+              //className: 'myitemsmenu',
+              className:this.state.cssmyitemsmenu,
+
             };
             xitem.push(NewData);//= NewData;
           }
@@ -176,19 +187,20 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
     let webx = new Web(NewSiteUrl);
 
     var _tems = [];
-    webx.lists.getByTitle("Navigation").items.select("Title", "parent/Title", "parent/ID", "Titlear", "enurl").expand("parent").get().then((allItems: any[]) => {
-
+    webx.lists.getByTitle("Navigation").items.select("Title", "parent/Title", "parent/ID", "Titlear", "enurl","Url").expand("parent").get().then((allItems: any[]) => {
       var sec = 0;
       for (var i = 0; i < allItems.length; i++) {
         if (allItems[i].parent == undefined) {
 
           if (allItems[i].Title != 'Sectors') {
             var NewData = {
-              text: this.state.languagelabel !=  "arabic" ? allItems[i].Title :allItems[i].Titlear,
+              text: this.state.languagelabel != "arabic" ? allItems[i].Title : allItems[i].Titlear,
               key: allItems[i].Titlear,
-              href: allItems[i].enurl,
+              href: this.state.languagelabel != "arabic" ? allItems[i].enurl : allItems[i].Url, //allItems[i].enurl,
               //parentId: allItems[i].parentId,
-              className: 'myitemsmenu',
+              //className: 'myitemsmenu',
+               className:this.state.cssmyitemsmenu,
+
               //subMenuProps:this.getobject(allItems,'Sectors'),
             };
             _tems.push(NewData);//= NewData;
@@ -200,13 +212,14 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
             sec = 1;
 
             var NewDatak = {
-              text: this.state.languagelabel !=  "arabic" ? "Sectors" :"القطاعات",
+              text: this.state.languagelabel != "arabic" ? "Sectors" : "القطاعات",
               key: "القطاعات", //allItems[i].Titlear,
               href: "",
-              className: 'myitemsmenu',
+              //className: 'myitemsmenu',
+              className:this.state.cssmyitemsmenu,
               subMenuProps:
               {
-                items: this.getobject(allItems,"Sectors" ) //this.state.languagelabel !=  "arabic" ? "Sectors" :"القطاعات")
+                items: this.getobject(allItems, "Sectors") //this.state.languagelabel !=  "arabic" ? "Sectors" :"القطاعات")
               },
             };
             _tems.push(NewDatak);//= NewData;
@@ -226,16 +239,16 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
 
   public _onLinkClick(ev?: React.MouseEvent<HTMLElement>, item?: INavLink) {
     if (item && item.name === 'News') {
-     // alert('News link clicked');
+      // alert('News link clicked');
     }
   }
 
   public _alertClicked() {
-   var language=this.state.IsArabic;
-    if (this.state.IsArabic==false){
-    language=true;
-    }else{
-      language=false;
+    var language = this.state.IsArabic;
+    if (this.state.IsArabic == false) {
+      language = true;
+    } else {
+      language = false;
     }
     this.setState({
       IsArabic: language
@@ -244,12 +257,16 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
 
   public _onChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
     //console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
-    var temp="";
-    temp =checked ? 'true' : 'false';
 
-    this.setState({
+    var temp = "";
+
+    if (this != null) {
+      temp = checked ? 'true' : 'false';
+      this.setState({
         IsArabic: temp,
-    });
+        checked: temp,
+      });
+    }
 
 
   }
@@ -323,12 +340,22 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
         <Container fluid>
           <Row noGutters={true} >
             <div className="languagediv">
-              <Stack horizontal wrap tokens={stackTokens}>
 
-                      <Toggle label="" className="mylabeltxt" defaultChecked onText="En" offText="AR" onChange={this._onChange} />
+              {
+              this.state!=null &&
+             <div>
+             {
 
+                this.state.showcompoennt == "yes" &&
+                <Stack horizontal wrap tokens={stackTokens}>
+                  <Toggle label="" defaultValue="false" className="mylabeltxt" defaultChecked onText="En"
+                    offText="عربي" onChange={this._onChange} />
+                </Stack>
 
-              </Stack>
+              }
+              </div>
+
+              }
 
             </div>
 
@@ -392,7 +419,7 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
                   items={this.state.MenuItem}
                   overflowButtonProps={overflowProps}
                   ariaLabel="Use left and right arrow keys to navigate between commands"
-                  className="mycommandbar"
+                  className={this.state.menucss}
                 />
 
               </Col>
