@@ -21,6 +21,8 @@ import { IWpcarousalmasterpageProps } from './components/IWpcarousalmasterpagePr
 
 export interface IWpcarousalmasterpageWebPartProps {
   description: string;
+  siteurl:string;
+  culture:string;
 }
 
 export default class WpcarousalmasterpageWebPart extends BaseClientSideWebPart <IWpcarousalmasterpageWebPartProps> {
@@ -29,7 +31,10 @@ export default class WpcarousalmasterpageWebPart extends BaseClientSideWebPart <
     const element: React.ReactElement<IWpcarousalmasterpageProps> = React.createElement(
       Wpcarousalmasterpage,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        siteurl:this.context.pageContext.web.absoluteUrl,
+        culture:this.context.pageContext.cultureInfo.currentCultureName,
+
       }
     );
 
