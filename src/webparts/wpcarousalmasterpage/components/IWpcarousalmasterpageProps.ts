@@ -18,6 +18,7 @@ export interface IWpcarousalmasterpageProps {
       pagelcass:string;
 
       QuickLinksItems:Array<object>;
+      IsShowAnnouncementCard:boolean;
 
 
 }

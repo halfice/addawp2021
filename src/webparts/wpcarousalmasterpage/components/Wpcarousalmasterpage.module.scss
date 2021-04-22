@@ -56,23 +56,25 @@ border-radius: 0px;
 
   .pageclassen{
 font-family: 'Bukra';
+direction: ltr!important;
+
+
   }
 
   .pageclassar{
 direction: rtl!important;
+font-family: 'Bukra';
+
   }
 
 
 .myrow{
   background: #3a3a94 url('https://abudhabidigital.sharepoint.com/sites/intranet/SiteAssets/images/patren-carousel-b.png');
   border: solid 3px white;
-  border-radius: 16px;
   text-align: center;
-
   color: white;
   cursor: pointer;
-  padding-top: 11px!important;
-  padding-bottom:11px!important;
+  padding-bottom:3px!important;
 }
 
 
@@ -94,7 +96,7 @@ languagediv :label {
 }
 
 
-.mycol:hover {
+.innerdiv:hover {
   border: solid 3px white;
   border-radius: 16px;
   text-align: center;
@@ -102,10 +104,13 @@ languagediv :label {
   color: white;
   cursor: pointer;
   background-color: #003;
+  padding: 2px;
+  margin-top: 11px;
   }
 
 .innerdiv a {
   color: white !important;
+  cursor: pointer;
 }
 
 .govtport {
@@ -123,6 +128,8 @@ border-radius: 0px;
   .mr-1{
     font-style: normal!important;
     font-size: 12px!important;
+    padding: 11px;
+    margin: 11px;
   }
 
   h2 {
@@ -158,9 +165,9 @@ border-radius: 0px;
       vertical-align: top;
       margin: 1px;
       /* background: #f3f3f3; */
-      padding: 13px;
+      padding-top: 11px;
       position: relative;
-      height: 142px;
+      height: 132px;
       /* border-radius: 25px; */
       font-size: 11px;
       border-bottom: solid 1px #3f51b5;

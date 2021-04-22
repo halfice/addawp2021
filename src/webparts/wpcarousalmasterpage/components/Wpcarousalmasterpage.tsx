@@ -46,6 +46,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
       QuicklinkHeading: "QuickLinks",
       pagelcass: "pageclassen",
       QuickLinksItems: [],
+      IsShowAnnouncementCard: false,
 
     });
 
@@ -198,25 +199,42 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
             var finalurl = "https://twitter.com/" + item["user"]["name"];
             var finaltext = item["text"];
             if (finaltext.length > 129) {
-              finaltext = finaltext.substring(0, 130);
+              finaltext = finaltext.substring(0, 120);
             }
             if (i == 0) {
               return (<Col md={12}>
-                <h2><span className="BukraFont">Tweets By</span>
-                  <a className="tweetheading" href="https://twitter.com/AbuDhabiDigital">
-                    @AbuDhabiDigital</a></h2></Col>);
+            {this.state != null && this.state.IsArabic == true &&
+                  <Row noGutters={true} className="zeropadding">
+
+                    <Col className={this.state.pagelcass}>
+                      <div className="headingar" > تغريدات بواسطة <a className="tweetheading">@ABUDHABIDIGITAL</a></div>
+
+                    </Col>
+
+                  </Row>
+                }
+                {this.state != null && this.state.IsArabic == false &&
+                  <Row>
+                   <Col className={this.state.pagelcass}>
+                      <div className="headingen"  >TWEETS BY <a className="tweetheading">@ABUDHABIDIGITAL</a>  </div>
+
+                    </Col>
+
+                  </Row>
+                }
 
 
 
+                    </Col>);
 
             }
             else {
               return (<Col md={6}><div className="AbuDhabi-Digital-twitter" key={i}>
                 <a target="_blank" href={finalurl} >
-                  <div>{finaltext}</div>
-                  <div className="t-time-stamp">
+                  <div className={this.state.pagelcass} >{finaltext}</div>
+                  <div className={this.state.pagelcass}>
                     {moment(item["created_at"]).format('DD/MM/YYYY')}
-                    <span className="mr-3 float-right">
+                    <span className={this.state.pagelcass}>
 
                       <i className="fab fa-twitter mr-1">
                         <FontAwesomeIcon icon={faTwitter} />
@@ -245,18 +263,36 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
             }
             if (i == 0) {
               return (<Col md={12}>
-                <h2><span className="BukraFont">Tweets By</span>
-                  <a className="tweetheading" href="https://twitter.com/AbuDhabiDigital">
-                    @AbuDhabi_Tamm</a></h2></Col>
+                {this.state != null && this.state.IsArabic == true &&
+                  <Row noGutters={true} className="zeropadding">
+
+                    <Col className={this.state.pagelcass}>
+                      <div className="headingar" > تغريدات بواسطة <a className="tweetheading">@ABUDHABI_TAMM</a></div>
+
+                    </Col>
+
+                  </Row>
+                }
+                {this.state != null && this.state.IsArabic == false &&
+                  <Row>
+                   <Col className={this.state.pagelcass}>
+                      <div className="headingen"  >TWEETS BY <a className="tweetheading">@ABUDHABI_TAMM</a>  </div>
+
+                    </Col>
+
+                  </Row>
+                }
+
+              </Col>
               );
             }
             else {
               return (<Col md={6}><div className="AbuDhabi-Digital-twitter" key={i}>
                 <a target="_blank" href={finalurl} >
                   {finaltext}
-                  <div className="t-time-stamp">
+                  <div className={this.state.pagelcass}>
                     {moment(item["created_at"]).format('DD/MM/YYYY')}
-                    <span className="mr-3 float-right">
+                    <span className={this.state.pagelcass}>
 
                       <i className="fab fa-twitter mr-1">
                         <FontAwesomeIcon icon={faTwitter} />
@@ -297,27 +333,22 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     const DocumentCardActivityPeople = [{ name: 'Annie Lindqvist', profileImageSrc: "" }];
     var CurrentPageurl = window.location.href;
 
-
-    var LinksAr = [
-      { "name": "Attendance", "namear": "الحضور", "url": "", "urlar": "" },
-      { "name": "Outlook", "namear": "الآفاق", "url": "", "urlar": "" },
-      { "name": "Orale", "namear": "وحي", "url": "", "urlar": "" },
-      { "name": "Smart Support", "namear": "الدعم", "url": "", "urlar": "" },
-      { "name": "Smart Entity", "namear": "ذكي", "url": "", "urlar": "" },
-      { "name": "Employees", "namear": "الموظف", "url": "", "urlar": "" }
-
-    ];
-
-    var Isarabic = 1;
-
-
+    var quickLinks = null;
     if (this.state != null) {
-      if (this.state.QuickLinksItems !=null){
-        var quickLinks = this.state.QuickLinksItems.map((item, i) => {
-          return (<div className={this.state.pagelcass}>
-            <Col md={2} className="mycol">
+      if (this.state.QuickLinksItems != null && this.state.IsArabic == true) {
+        quickLinks = this.state.QuickLinksItems.map((item, i) => {
+          return (
+            <Col md={3}>
               <div className="innerdiv" >{item["namear"]}</div></Col>
-          </div>);
+          );
+
+        });
+      } if (this.state.QuickLinksItems != null && this.state.IsArabic == false) {
+        quickLinks = this.state.QuickLinksItems.map((item, i) => {
+          return (
+            <Col md={3}>
+              <div className="innerdiv" >{item["name"]}</div></Col>
+          );
 
         });
       }
@@ -326,77 +357,100 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
 
     return (
       <div className={styles.wpcarousalmasterpage}>
-        <Container fluid>
-          <Row noGutters={true} >
-            <Col>
-              {this.state != null && this.state.IsArabic == true &&
-                <h2>الإعلانات</h2>
-              }
-              {this.state != null && this.state.IsArabic == false &&
-                <h2>Announcements</h2>
-              }
-            </Col>
-          </Row>
-          <Row noGutters={true} >
-            <Col>
-              <DocumentCard
-                aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
-                onClickHref="http://bing.com"
-              >
-                <DocumentCardPreview {...previewProps} />
-                <DocumentCardTitle
-                  title={
-                    'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
-                    'it_needs_truncating.pptx'
-                  }
-                  shouldTruncate
-                />
-                <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
-              </DocumentCard>
+        {this.state != null && this.state.IsShowAnnouncementCard == true &&
 
-            </Col>
+          <Container fluid>
 
-            <Col>
-              <DocumentCard
-                aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
-                onClickHref="http://bing.com"
-              >
-                <DocumentCardPreview {...previewProps} />
-                <DocumentCardTitle
-                  title={
-                    'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
-                    'it_needs_truncating.pptx'
-                  }
-                  shouldTruncate
-                />
-                <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
-              </DocumentCard>
+            {this.state != null && this.state.IsArabic == true && this.state.IsShowAnnouncementCard == true &&
+              <Row noGutters={true} className="zeropadding">
+                <Col className={this.state.pagelcass}>
+                  <div className="seeallar">عرض الكل</div>
 
-            </Col>
+                </Col>
+                <Col className={this.state.pagelcass}>
+                  <div className="headingar">الإعلانات</div>
+
+                </Col>
+
+              </Row>
+            }
+            {this.state != null && this.state.IsArabic == false && this.state.IsShowAnnouncementCard == true &&
+              <Row>
+                <Col className={this.state.pagelcass}>
+
+                  <div className="headingen">Announcements</div>
+                </Col>
+                <Col>
+
+                  <div className="seeallen"  >see all</div>
+                </Col>
+              </Row>
+            }
 
 
-            <Col>
-              <DocumentCard
-                aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
-                onClickHref="http://bing.com"
-              >
-                <DocumentCardPreview {...previewProps} />
-                <DocumentCardTitle
-                  title={
-                    'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
-                    'it_needs_truncating.pptx'
-                  }
-                  shouldTruncate
-                />
-                <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
-              </DocumentCard>
 
-            </Col>
+            <Row noGutters={true} >
+              <Col>
+                <DocumentCard
+                  aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
+                  onClickHref="http://bing.com"
+                >
+                  <DocumentCardPreview {...previewProps} />
+                  <DocumentCardTitle
+                    title={
+                      'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
+                      'it_needs_truncating.pptx'
+                    }
+                    shouldTruncate
+                  />
+                  <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
+                </DocumentCard>
+
+              </Col>
+
+              <Col>
+                <DocumentCard
+                  aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
+                  onClickHref="http://bing.com"
+                >
+                  <DocumentCardPreview {...previewProps} />
+                  <DocumentCardTitle
+                    title={
+                      'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
+                      'it_needs_truncating.pptx'
+                    }
+                    shouldTruncate
+                  />
+                  <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
+                </DocumentCard>
+
+              </Col>
 
 
-          </Row>
-        </Container>
-        <hr></hr>
+              <Col>
+                <DocumentCard
+                  aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
+                  onClickHref="http://bing.com"
+                >
+                  <DocumentCardPreview {...previewProps} />
+                  <DocumentCardTitle
+                    title={
+                      'Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_' +
+                      'it_needs_truncating.pptx'
+                    }
+                    shouldTruncate
+                  />
+                  <DocumentCardActivity activity="Created a few minutes ago" people={DocumentCardActivityPeople} />
+                </DocumentCard>
+
+              </Col>
+
+
+            </Row>
+
+          </Container>
+        }
+
         <Container fluid>
 
           <Row noGutters={true} >
@@ -427,25 +481,36 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
         </Container>
         <hr></hr>
         <Container fluid>
+          {this.state != null && this.state.IsArabic == true &&
+            <Row noGutters={true} className="zeropadding">
+              <Col className={this.state.pagelcass}>
+                <div className="seeallar">عرض الكل</div>
 
-          <Row noGutters={true} className="zeropadding">
-            <h3></h3>
-            {this.state != null && this.state.IsArabic == true &&
-              <h2 className={this.state.pagelcass}>روابط سريعة</h2>
-            }
-            {this.state != null && this.state.IsArabic == false &&
-              <h2 className={this.state.pagelcass}>Quick Links</h2>
-            }
+              </Col>
+              <Col className={this.state.pagelcass}>
+                <div className="headingar">روابط سريعة</div>
 
+              </Col>
 
+            </Row>
+          }
+          {this.state != null && this.state.IsArabic == false &&
+            <Row>
+              <Col className={this.state.pagelcass}>
 
-          </Row>
+                <div className="headingen">Quick Links</div>
+              </Col>
+              <Col>
+
+                <div className="seeallen"  >see all</div>
+              </Col>
+            </Row>
+          }
           <Row noGutters={true} className="zeropadding myrow">
 
             {quickLinks}
 
-            <Col>
-            </Col>
+
 
 
           </Row>
