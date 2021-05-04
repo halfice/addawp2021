@@ -47,11 +47,13 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
       pagelcass: "pageclassen",
       QuickLinksItems: [],
       IsShowAnnouncementCard: false,
+      showquicklinkseall:"no"
 
     });
 
     this.getauhtweets = this.getauhtweets.bind(this);
     this.tmtweets = this.tmtweets.bind(this);
+    this.redirecturl = this.redirecturl.bind(this);
 
 
   }
@@ -161,19 +163,31 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     this.GetQuicklinks();
   }
 
+  public redirecturl(item) {
+    if (item!=undefined && item!="0"){
+     // alert(item);
+     window.location.href = item;
+    }
+
+
+
+  }
+
   public async GetQuicklinks() {
     var TempComplteDropDown = [];
     var NewISiteUrl = this.props.siteurl;
     var NewSiteUrl = NewISiteUrl.replace("/SitePages", "");
     let webx = new Web(NewSiteUrl);
     var _tems = [];
-    webx.lists.getByTitle("QuickLinks").items.select("Title", "TitleAr", "Link").get().then((allItems: any[]) => {
+    webx.lists.getByTitle("QuickLinks").items.select("Title", "TitleAr", "Link","LinkAr").get().then((allItems: any[]) => {
       var sec = 0;
       for (var i = 0; i < allItems.length; i++) {
         var NewData = {
           name: allItems[i].Title,
           namear: allItems[i].TitleAr,
           url: allItems[i].Link,
+          urlar: allItems[i].LinkAr,
+
         };
         _tems.push(NewData);//= NewData;
       }
@@ -203,7 +217,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
             }
             if (i == 0) {
               return (<Col md={12}>
-            {this.state != null && this.state.IsArabic == true &&
+                {this.state != null && this.state.IsArabic == true &&
                   <Row noGutters={true} className="zeropadding">
 
                     <Col className={this.state.pagelcass}>
@@ -215,7 +229,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
                 }
                 {this.state != null && this.state.IsArabic == false &&
                   <Row>
-                   <Col className={this.state.pagelcass}>
+                    <Col className={this.state.pagelcass}>
                       <div className="headingen"  >TWEETS BY <a className="tweetheading">@ABUDHABIDIGITAL</a>  </div>
 
                     </Col>
@@ -225,7 +239,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
 
 
 
-                    </Col>);
+              </Col>);
 
             }
             else {
@@ -275,7 +289,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
                 }
                 {this.state != null && this.state.IsArabic == false &&
                   <Row>
-                   <Col className={this.state.pagelcass}>
+                    <Col className={this.state.pagelcass}>
                       <div className="headingen"  >TWEETS BY <a className="tweetheading">@ABUDHABI_TAMM</a>  </div>
 
                     </Col>
@@ -339,7 +353,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
         quickLinks = this.state.QuickLinksItems.map((item, i) => {
           return (
             <Col md={3}>
-              <div className="innerdiv" >{item["namear"]}</div></Col>
+              <div onClick={this.redirecturl.bind(this, item["urlar"])} className="innerdiv" >{item["namear"]}</div></Col>
           );
 
         });
@@ -347,7 +361,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
         quickLinks = this.state.QuickLinksItems.map((item, i) => {
           return (
             <Col md={3}>
-              <div className="innerdiv" >{item["name"]}</div></Col>
+              <div onClick={this.redirecturl.bind(this, item["url"])} className="innerdiv" >{item["name"]}</div></Col>
           );
 
         });
@@ -481,7 +495,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
         </Container>
         <hr></hr>
         <Container fluid>
-          {this.state != null && this.state.IsArabic == true &&
+          {this.state != null && this.state.IsArabic == true && this.state.showquicklinkseall=="yes" &&
             <Row noGutters={true} className="zeropadding">
               <Col className={this.state.pagelcass}>
                 <div className="seeallar">عرض الكل</div>
@@ -494,7 +508,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
 
             </Row>
           }
-          {this.state != null && this.state.IsArabic == false &&
+          {this.state != null && this.state.IsArabic == false && this.state.showquicklinkseall=="yes" &&
             <Row>
               <Col className={this.state.pagelcass}>
 
@@ -506,11 +520,10 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
               </Col>
             </Row>
           }
+
           <Row noGutters={true} className="zeropadding myrow">
 
             {quickLinks}
-
-
 
 
           </Row>
