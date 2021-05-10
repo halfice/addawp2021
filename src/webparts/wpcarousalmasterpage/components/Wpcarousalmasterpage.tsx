@@ -247,13 +247,17 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
                 <a target="_blank" href={finalurl} >
                   <div className={this.state.pagelcass} >{finaltext}</div>
                   <div className={this.state.pagelcass}>
+
                     {moment(item["created_at"]).format('DD/MM/YYYY')}
                     <span className={this.state.pagelcass}>
 
                       <i className="fab fa-twitter mr-1">
                         <FontAwesomeIcon icon={faTwitter} />
                       </i>
-                    </span></div>
+                    </span>
+
+
+                    </div>
                 </a>
               </div></Col>);
             }
@@ -303,7 +307,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
             else {
               return (<Col md={6}><div className="AbuDhabi-Digital-twitter" key={i}>
                 <a target="_blank" href={finalurl} >
-                  {finaltext}
+                <div className={this.state.pagelcass} >{finaltext}</div>
                   <div className={this.state.pagelcass}>
                     {moment(item["created_at"]).format('DD/MM/YYYY')}
                     <span className={this.state.pagelcass}>
