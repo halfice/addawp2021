@@ -22,5 +22,7 @@ export interface IWpcarousalmasterpageProps {
 
       showquicklinkseall:string;
 
+      wploader:string;
+
 
 }

@@ -47,7 +47,8 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
       pagelcass: "pageclassen",
       QuickLinksItems: [],
       IsShowAnnouncementCard: false,
-      showquicklinkseall:"no"
+      showquicklinkseall: "no",
+      wploader: "1",
 
     });
 
@@ -64,18 +65,15 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     var self = this;
 
     xhttp.onreadystatechange = (e) => {
-      //console.log(this);
-      if (xhttp.readyState === 4 && xhttp.status === 200) {
-        // console.log("ok, response :", xhttp.response);
-        //console.log(JSON.parse(xhttp.response));
-        var TwAuh = JSON.parse(xhttp.response);
 
-        //console.log(TwAuh);
-        console.log("Time" + TwAuh.length);
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
+
+       var TwAuh = JSON.parse(xhttp.response);
         this.setState({
-          // posts: JSON.parse(this.response)
+
           isloadedTm: 1,
           tamtweets: TwAuh,
+          wploader:"0",
         });
       }
     };
@@ -94,33 +92,15 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     var self = this;
 
     xhttp.onreadystatechange = (e) => {
-      console.log(this);
+     // console.log(this);
       if (xhttp.readyState === 4 && xhttp.status === 200) {
-        // console.log("ok, response :", xhttp.response);
-        //console.log(JSON.parse(xhttp.response));
+
         var TwAuh = JSON.parse(xhttp.response);
-        //var tmpar=[];
 
-
-        // for(var x=0;x<5;x++)
-        // {
-        // var txt=TwAuh[x]["text"];
-        //var created_at=TwAuh[x]["created_at"];
-        //var obj={
-        // text:txt,
-        // created_at:created_at,
-
-        // };
-
-        // tmpar.push(obj);
-
-        //}
-
-        //console.log(TwAuh);
-        //console.log("Time" + TwAuh.length);
         this.setState({
           auhtweets: TwAuh,
           isloaded: 1,
+          wploader:"0",
         });
       }
     };
@@ -154,7 +134,9 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
       languagelabel: tmpLang,
       menucss: csstmp,
       IsArabic: temp,
-      pagelcass: Tempcss
+      pagelcass: Tempcss,
+      wploader: "1",
+
 
 
     });
@@ -164,9 +146,9 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
   }
 
   public redirecturl(item) {
-    if (item!=undefined && item!="0"){
-     // alert(item);
-     window.location.href = item;
+    if (item != undefined && item != "0") {
+      // alert(item);
+      window.location.href = item;
     }
 
 
@@ -179,7 +161,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     var NewSiteUrl = NewISiteUrl.replace("/SitePages", "");
     let webx = new Web(NewSiteUrl);
     var _tems = [];
-    webx.lists.getByTitle("QuickLinks").items.select("Title", "TitleAr", "Link","LinkAr").get().then((allItems: any[]) => {
+    webx.lists.getByTitle("QuickLinks").items.select("Title", "TitleAr", "Link", "LinkAr").get().then((allItems: any[]) => {
       var sec = 0;
       for (var i = 0; i < allItems.length; i++) {
         var NewData = {
@@ -257,7 +239,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
                     </span>
 
 
-                    </div>
+                  </div>
                 </a>
               </div></Col>);
             }
@@ -307,7 +289,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
             else {
               return (<Col md={6}><div className="AbuDhabi-Digital-twitter" key={i}>
                 <a target="_blank" href={finalurl} >
-                <div className={this.state.pagelcass} >{finaltext}</div>
+                  <div className={this.state.pagelcass} >{finaltext}</div>
                   <div className={this.state.pagelcass}>
                     {moment(item["created_at"]).format('DD/MM/YYYY')}
                     <span className={this.state.pagelcass}>
@@ -375,31 +357,35 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
 
     return (
       <div className={styles.wpcarousalmasterpage}>
+
+        <hr></hr>
+        {
+          this.state != null && this.state.wploader == "1" &&
+          <div className="axixloafder">
+
+          </div>
+
+        }
+
         {this.state != null && this.state.IsShowAnnouncementCard == true &&
 
           <Container fluid>
-
             {this.state != null && this.state.IsArabic == true && this.state.IsShowAnnouncementCard == true &&
               <Row noGutters={true} className="zeropadding">
                 <Col className={this.state.pagelcass}>
                   <div className="seeallar">عرض الكل</div>
-
                 </Col>
                 <Col className={this.state.pagelcass}>
                   <div className="headingar">الإعلانات</div>
-
                 </Col>
-
               </Row>
             }
             {this.state != null && this.state.IsArabic == false && this.state.IsShowAnnouncementCard == true &&
               <Row>
                 <Col className={this.state.pagelcass}>
-
                   <div className="headingen">Announcements</div>
                 </Col>
                 <Col>
-
                   <div className="seeallen"  >see all</div>
                 </Col>
               </Row>
@@ -476,11 +462,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
             <Col md={6} className="zeropadding">
               <Row>
 
-
                 {AuhTweets}
-
-
-
 
               </Row>
             </Col>
@@ -499,7 +481,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
         </Container>
         <hr></hr>
         <Container fluid>
-          {this.state != null && this.state.IsArabic == true && this.state.showquicklinkseall=="yes" &&
+          {this.state != null && this.state.IsArabic == true && this.state.showquicklinkseall == "yes" &&
             <Row noGutters={true} className="zeropadding">
               <Col className={this.state.pagelcass}>
                 <div className="seeallar">عرض الكل</div>
@@ -512,7 +494,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
 
             </Row>
           }
-          {this.state != null && this.state.IsArabic == false && this.state.showquicklinkseall=="yes" &&
+          {this.state != null && this.state.IsArabic == false && this.state.showquicklinkseall == "yes" &&
             <Row>
               <Col className={this.state.pagelcass}>
 
@@ -536,10 +518,6 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
 
 
         </Container>
-        <hr></hr>
-
-
-
 
 
       </div>

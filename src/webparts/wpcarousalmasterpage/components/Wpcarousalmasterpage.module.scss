@@ -1,6 +1,20 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
 :global{
+
+.axixloafder{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  background-image: url('https://abudhabidigital.sharepoint.com/Site%20Assets/ezgif-2-6d0b072c3d3f.gif');
+  border-radius: 22px;
+  background-color: lightgray;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
 .pageclassarorg{
   direction: rtl!important;
 }
