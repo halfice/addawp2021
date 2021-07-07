@@ -279,7 +279,7 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
       {
         key: 'Home',
         text: 'Home',
-        href: 'https://abudhabidigital.sharepoint.com/',
+        href: 'https://xxxx.sharepoint.com/',
         className: 'myitemsmenu',
       },
       {
@@ -292,7 +292,7 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
       {
         key: 'Share Folder',
         text: 'Share Folder',
-        href: 'https://abudhabidigital-my.sharepoint.com/',
+        href: 'https://xxxx-my.sharepoint.com/',
         className: 'myitemsmenu',
       },
       {
@@ -366,7 +366,7 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
                   <Carousel.Item>
                     <img
                       className="d-block w-100 myimgg"
-                      src="https://abudhabidigital.sharepoint.com/Site%20Assets/4.jpg"
+                      src="https://xxxx.sharepoint.com/Site%20Assets/4.jpg"
                       alt="First slide"
 
                     />
@@ -378,7 +378,7 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
                   <Carousel.Item>
                     <img
                       className="d-block w-100 myimgg"
-                      src="https://abudhabidigital.sharepoint.com/Site%20Assets/img1.jpg"
+                      src="https://xxxx.sharepoint.com/Site%20Assets/img1.jpg"
                       alt="Second slide"
                     />
 
@@ -390,7 +390,7 @@ export default class Macwebpartadda extends React.Component<IMacwebpartaddaProps
                   <Carousel.Item>
                     <img
                       className="d-block w-100 myimgg"
-                      src="https://abudhabidigital.sharepoint.com/Site%20Assets/img2.jpg"
+                      src="https://xxxx.sharepoint.com/Site%20Assets/img2.jpg"
                       alt="Third slide"
                     />
 
