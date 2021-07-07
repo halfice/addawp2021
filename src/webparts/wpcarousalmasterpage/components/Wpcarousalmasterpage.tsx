@@ -79,7 +79,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     };
     var request = {
       Action: "ListTweetsOnUserTimeline",
-      ScreenName: "AbuDhabi_TAMM"
+      ScreenName: "xx"
     };
     xhttp.open("POST", "https://www.tweetjs.com/API.aspx", true);
     xhttp.send(JSON.stringify(request));
@@ -106,7 +106,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
     };
     var request = {
       Action: "ListTweetsOnUserTimeline",
-      ScreenName: "abudhabidigital"
+      ScreenName: "xx"
     };
     xhttp.open("POST", "https://www.tweetjs.com/API.aspx", true);
     xhttp.send(JSON.stringify(request));
@@ -203,7 +203,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
                   <Row noGutters={true} className="zeropadding">
 
                     <Col className={this.state.pagelcass}>
-                      <div className="headingar" > تغريدات بواسطة <a className="tweetheading">@ABUDHABIDIGITAL</a></div>
+                      <div className="headingar" > تغريدات بواسطة <a className="tweetheading">@xx</a></div>
 
                     </Col>
 
@@ -212,7 +212,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
                 {this.state != null && this.state.IsArabic == false &&
                   <Row>
                     <Col className={this.state.pagelcass}>
-                      <div className="headingen"  >TWEETS BY <a className="tweetheading">@ABUDHABIDIGITAL</a>  </div>
+                      <div className="headingen"  >TWEETS BY <a className="tweetheading">@xx</a>  </div>
 
                     </Col>
 
@@ -225,7 +225,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
 
             }
             else {
-              return (<Col md={6}><div className="AbuDhabi-Digital-twitter" key={i}>
+              return (<Col md={6}><div className="xx-xx-twitter" key={i}>
                 <a target="_blank" href={finalurl} >
                   <div className={this.state.pagelcass} >{finaltext}</div>
                   <div className={this.state.pagelcass}>
@@ -267,7 +267,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
                   <Row noGutters={true} className="zeropadding">
 
                     <Col className={this.state.pagelcass}>
-                      <div className="headingar" > تغريدات بواسطة <a className="tweetheading">@ABUDHABI_TAMM</a></div>
+                      <div className="headingar" > تغريدات بواسطة <a className="tweetheading">@xx</a></div>
 
                     </Col>
 
@@ -276,7 +276,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
                 {this.state != null && this.state.IsArabic == false &&
                   <Row>
                     <Col className={this.state.pagelcass}>
-                      <div className="headingen"  >TWEETS BY <a className="tweetheading">@ABUDHABI_TAMM</a>  </div>
+                      <div className="headingen"  >TWEETS BY <a className="tweetheading">@xx</a>  </div>
 
                     </Col>
 
@@ -287,7 +287,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
               );
             }
             else {
-              return (<Col md={6}><div className="AbuDhabi-Digital-twitter" key={i}>
+              return (<Col md={6}><div className="xx-Digital-twitter" key={i}>
                 <a target="_blank" href={finalurl} >
                   <div className={this.state.pagelcass} >{finaltext}</div>
                   <div className={this.state.pagelcass}>
@@ -324,7 +324,7 @@ export default class Wpcarousalmasterpage extends React.Component<IWpcarousalmas
             href: 'http://bing.com',
             target: '_blank',
           },
-          previewImageSrc: "https://abudhabidigital.sharepoint.com/sites/intranet/SiteAssets/Images/new1.jpg",
+          previewImageSrc: "https://xxx.sharepoint.com/sites/intranet/SiteAssets/Images/new1.jpg",
           width: 318,
           height: 196,
         },
